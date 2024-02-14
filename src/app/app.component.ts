@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'we-mail';
+  isMenuOpen = false;
+  public onSidenavClick(): void {
+    this.isMenuOpen = false;
+  }
 }
