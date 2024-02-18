@@ -9,13 +9,15 @@ import { MatButtonModule } from '@angular/material/button'
 import { UsersComponent } from './components/users/users.component';
 import { ActivityComponent } from './components/activity/activity.component';
 import { EventsComponent } from './components/events/events.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
     ActivityComponent,
-    EventsComponent
+    EventsComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

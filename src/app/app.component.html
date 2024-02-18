@@ -1,25 +1,8 @@
 <div class="header">
-  <button mat-button class="menu-button" (click)="isMenuOpen = !isMenuOpen">
-    <mat-icon>{{ isMenuOpen ? 'menu_open' : 'menu' }}</mat-icon>
-  </button>
-  <div class="links-wrapper">
-    <div class="link">Users</div>
-    <div class="link">Events</div>
-    <div class="link">Activity</div>
+    <span class="title">We Mail</span>
+    <div class="links-wrapper">
+      <div class="link" (click)="navigate('/users')" [class.active]="activeLink=='/users'">Users</div>
+      <div class="link" (click)="navigate('/events')" [class.active]="activeLink=='/events'">Events</div>
+      <div class="link" (click)="navigate('/activity')" [class.active]="activeLink=='/activity'">Activity</div>
+    </div>
   </div>
-</div>
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav 
-    autoFocus="false" 
-    mode="side" 
-    [(opened)]="isMenuOpen" 
-    class="sidenav" 
-    (click)="onSidenavClick()">
-    <a mat-button routerLink="/events">Events</a>
-    <a mat-button routerLink="/users">Users</a>
-    <a mat-button routerLink="/activity">Activity</a>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>

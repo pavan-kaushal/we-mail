@@ -18,12 +18,10 @@ a {
     font-weight: bold;
     display: flex;
     align-items: center;
-
-    .menu-button {
-        margin-right: 24px;
-        min-width: 0;
-        padding: 0;
-        line-height: normal;
+    height: 36px;
+    .title {
+        font-size: 18px;
+        margin-left: 16px;
     }
 
     .links-wrapper {
@@ -33,7 +31,16 @@ a {
         margin-left: auto;
         margin-right: 20px;
         .link {
-
+            transition: all 0.2s ease;
+            cursor: pointer;
+            padding: 3px;
+            &:hover {
+                border-bottom: 1px solid white;
+                transform: scale(1.1);
+            }
+            &.active {
+                border-bottom: 1px solid white;
+            }
         }
     }
 }
