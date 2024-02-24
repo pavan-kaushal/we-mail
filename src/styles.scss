@@ -2,3 +2,13 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+button {
+    cursor: pointer;
+}
+
+.green-save-btn {
+    background: #0A9C4D !important;
+    color: white !important;
+}

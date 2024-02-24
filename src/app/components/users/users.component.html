@@ -1,5 +1,5 @@
 <div style="padding: 10px 0px; display: flex; align-items: center; justify-content: flex-end;">
-    <button mat-raised-button color="primary">
+    <button mat-raised-button color="primary" (click)="openUserDialog()">
         <mat-icon>person_add</mat-icon>
         Add User
     </button>
@@ -37,6 +37,28 @@
     </table>
 </div>
 
-<ng-template #userData>
-    
+<ng-template #userData let-data>
+    <div mat-dialog-title style="text-align: center;">
+        {{ data._id ? 'Edit' : 'Add' }} User
+    </div>
+    <div mat-dialog-content class="category-content">
+        <div class="form-item" style="margin-bottom: 12px;">
+            <div class="label">
+                <span>Name</span>
+                <span>:</span>
+            </div>
+            <input placeholder="Ex. John Wick">
+        </div>
+        <div class="form-item">
+            <div class="label">
+                <span>Gmail</span>
+                <span>:</span>
+            </div>
+            <input placeholder="Ex. johnwick007@gmail.com">
+        </div>
+    </div>
+    <div mat-dialog-actions style="display: flex; align-items: center; justify-content: flex-end;">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-raised-button class="green-save-btn">Save</button>
+    </div>
 </ng-template>
