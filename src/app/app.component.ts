@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  isMenuOpen = false;
-  activeLink;
+  isLoggedIn = true;
 
   constructor(
     private _router: Router,
@@ -17,17 +15,10 @@ export class AppComponent implements OnInit {
   }
   
   ngOnInit() {
-    this._router.events.pipe(
-      filter(event => event instanceof NavigationEnd)  
-    ).subscribe((event: NavigationEnd) => {
-      this.activeLink = event.url
-    });
-    if(!this.activeLink){
-      this.navigate('/events')
+    if(this.isLoggedIn){
+      this._router.navigate(['/home/users'])
+    } else {
+      this._router.navigate(['/login'])
     }
-  }
-
-  navigate(link){
-    this._router.navigate([link])
   }
 }

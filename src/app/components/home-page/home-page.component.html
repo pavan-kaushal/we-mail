@@ -1,0 +1,12 @@
+<div class="header">
+    <span class="title">
+      <mat-icon>mail</mat-icon>
+      We Mail
+    </span>
+    <div class="links-wrapper">
+      <a class="link" (click)="navigate('/users')" [class.active]="activeLink=='/users'">Users</a>
+      <a class="link" (click)="navigate('/events')" [class.active]="activeLink=='/events'">Events</a>
+      <a class="link" (click)="navigate('/activity')" [class.active]="activeLink=='/activity'">Activity</a>
+    </div>
+  </div>
+  <router-outlet></router-outlet>

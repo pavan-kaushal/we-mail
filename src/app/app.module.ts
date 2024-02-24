@@ -10,6 +10,8 @@ import { UsersComponent } from './components/users/users.component';
 import { ActivityComponent } from './components/activity/activity.component';
 import { EventsComponent } from './components/events/events.component';
 import { LoginComponent } from './components/login/login.component';
+import { RouterModule } from '@angular/router';
+import { HomePageComponent } from './components/home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import { LoginComponent } from './components/login/login.component';
     UsersComponent,
     ActivityComponent,
     EventsComponent,
+    HomePageComponent,
     LoginComponent,
   ],
   imports: [
@@ -26,6 +29,7 @@ import { LoginComponent } from './components/login/login.component';
     MatIconModule,
     MatSidenavModule,
     MatButtonModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

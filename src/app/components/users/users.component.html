@@ -1,1 +1,42 @@
-users
+<div style="padding: 10px 0px; display: flex; align-items: center; justify-content: flex-end;">
+    <button mat-raised-button color="primary">
+        <mat-icon>person_add</mat-icon>
+        Add User
+    </button>
+</div>
+
+<div class="table-wrapper">
+    <table>
+        <colgroup>
+            <col width="10%"/>
+            <col width="40%"/>
+            <col width="40%"/>
+            <col width="10%"/>
+        </colgroup>
+        <thead>
+            <tr>
+                <td>S No</td>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Pavan</td>
+                <td>pavankaushal7@gmail.com</td>
+                <td>
+                    <div class="actions">
+                        <mat-icon style="color: #3f51b5;">edit</mat-icon>
+                        <mat-icon style="color: #f44336;">delete</mat-icon>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<ng-template #userData>
+    
+</ng-template>
