@@ -77,8 +77,9 @@ table {
 .form-item {
     display: flex;
     align-items: center;
+    padding: 5px 0px;
     .label {
-        width: 75px;
+        width: 60px;
         margin-right: 10px;
         justify-content: space-between;
         color: #21254E !important;
