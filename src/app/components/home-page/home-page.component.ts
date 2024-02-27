@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  activeLink;
+  links = ['/users', '/events', '/activity'];
 
   constructor(
     private _router: Router,
@@ -16,11 +16,5 @@ export class HomePageComponent implements OnInit {
   }
   
   ngOnInit() {
-    this.activeLink = '/users';
-  }
-
-  navigate(link){
-    this.activeLink = link;
-    this._router.navigate([`home${link}`])
   }
 }

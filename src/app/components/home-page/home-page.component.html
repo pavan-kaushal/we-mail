@@ -4,9 +4,9 @@
       We Mail
     </span>
     <div class="links-wrapper">
-      <a class="link" (click)="navigate('/users')" [class.active]="activeLink=='/users'">Users</a>
-      <a class="link" (click)="navigate('/events')" [class.active]="activeLink=='/events'">Events</a>
-      <a class="link" (click)="navigate('/activity')" [class.active]="activeLink=='/activity'">Activity</a>
+      <a class="link" routerLink='users' routerLinkActive="active">Users</a>
+      <a class="link" routerLink='events' routerLinkActive="active">Events</a>
+      <a class="link" routerLink='activity' routerLinkActive="active">Activity</a>
     </div>
   </div>
   <router-outlet></router-outlet>
