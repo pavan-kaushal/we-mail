@@ -7,12 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  links = ['/users', '/events', '/activity'];
 
-  constructor(
-    private _router: Router,
-  ) {
-
+  constructor() {
   }
   
   ngOnInit() {
