@@ -12,3 +12,52 @@ button {
     background: #0A9C4D !important;
     color: white !important;
 }
+
+.search-input {
+    position: relative;
+    padding: 0 5px;
+
+    > input {
+        padding: 9px;
+        border-radius: 5px;
+        padding-left: 40px;
+        font-size: 14px;
+        line-height: 20px;
+        border: 1px solid #D6D6D6;
+        width: 100%;
+
+        ::placeholder {
+            color: #D6D6D6;
+        }
+    }
+
+    &::before {
+        font-family: "Material Icons";
+        content: "\e8b6";
+        position: absolute;
+        top: 9px;
+        left: 16px;
+        font-size: 24px;
+        color: #BDBDBD;
+    }
+}
+
+// .CC_1 {
+//     background: #9B59B630 !important;
+//     color: #9B59B6 !important;
+// }
+
+.CC_1 {
+    background: #2980B930 !important;
+    color: #2980B9 !important;
+}
+
+.CC_2 {
+    background: #27AE6030 !important;
+    color: #27AE60 !important;
+}
+
+.CC_3 {
+    background: #FFCD2940 !important;
+    color: #AC8813 !important;
+}

@@ -1,0 +1,87 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 0px 20px;
+    flex-basis: 0;
+    overflow-y: auto;
+    background: #f6f6f6;
+}
+
+mat-card {
+    margin: 5px;
+    padding: 5px;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+    justify-content: center;
+
+    > mat-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .role {
+            font-size: 16px;
+            padding: 20px 10px;
+        }
+        .actions {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            .action {
+                font-size: 14px;
+                padding: 0 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                mat-icon {
+                    font-size: 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}
+
+.delete-icon {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: -3px;
+    cursor: pointer;
+}
+
+.top-actions{
+    padding: 5px 0px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+}
+
+.form-item {
+    display: flex;
+    align-items: center;
+    padding: 5px 0px;
+    .label {
+        width: 100px;
+        margin-right: 10px;
+        justify-content: space-between;
+        color: #21254E !important;
+        display: flex;
+        align-items: center;
+        font-size: 16px !important;
+    }
+    input {
+        padding: 10px 6px;
+        flex: 1;
+        border-radius: 3px;
+        border-width: 0.5px;
+    }
+}

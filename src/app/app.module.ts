@@ -13,6 +13,8 @@ import { RouterModule } from '@angular/router';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +33,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     RouterModule,
     MatDialogModule,
     MatFormFieldModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

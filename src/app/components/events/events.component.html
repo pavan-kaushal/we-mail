@@ -1,1 +1,59 @@
-events
+<div class="top-actions">
+    <div class="search-input" style="width: 250px;">
+        <input type="text" placeholder="Search Event">
+    </div>
+    <button mat-raised-button color="primary" (click)="openEventDialog()">
+        <mat-icon>add</mat-icon>
+        Add Event
+    </button>
+</div>
+
+<div class="grid">
+    <mat-card class="CC_1">
+        <mat-icon class="delete-icon">delete</mat-icon>
+        <span class="role">Event 1</span>
+        <div class="actions">
+            <div class="action">
+                <mat-icon>manage_accounts</mat-icon>
+                Users
+            </div>
+            <div class="action">
+                <mat-icon>edit_square</mat-icon>
+                Edit
+            </div>
+        </div>
+    </mat-card>
+</div>
+
+<ng-template #eventData let-data>
+    <div mat-dialog-title style="text-align: center;">
+        {{ data._id ? 'Edit' : 'Add' }} Event
+    </div>
+    <div mat-dialog-content class="category-content">
+        <div class="form-item">
+            <div class="label">
+                <span>Name</span>
+                <span>:</span>
+            </div>
+            <input placeholder="Ex. Monthly Newsletter">
+        </div>
+        <div class="form-item">
+            <div class="label">
+                <span>Email</span>
+                <span>:</span>
+            </div>
+            <input placeholder="Ex. newsletter@wikipedia.com">
+        </div>
+        <div class="form-item">
+            <div class="label">
+                <span>Description</span>
+                <span>:</span>
+            </div>
+            <input placeholder="Ex. event description">
+        </div>
+    </div>
+    <div mat-dialog-actions style="display: flex; align-items: center; justify-content: flex-end;">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-raised-button class="green-save-btn">Save</button>
+    </div>
+</ng-template>
