@@ -3,12 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { UsersComponent } from './components/users/users.component';
 import { EventsComponent } from './components/events/events.component';
 import { ActivityComponent } from './components/activity/activity.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/authorisation/login/login.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { SignupComponent } from './components/authorisation/signup/signup.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent},
+  { path: 'signup', component: SignupComponent},
   { path: 'home', component:  HomePageComponent, children: [
     { path: 'users', component: UsersComponent},
     { path: 'activity', component: ActivityComponent},

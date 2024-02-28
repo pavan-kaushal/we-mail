@@ -1,0 +1,34 @@
+<div class="center-container">
+    <div class="header">
+        We Mail
+    </div>
+    <form class="login-form" [formGroup]="signUpForm">
+        <div class="field" [class.is-invalid]="hasError('name')">
+            <mat-icon class="label-icon">face</mat-icon>
+            <input type="text" placeholder="Name" formControlName="name">
+            <ng-container *ngIf="hasError('name')">
+                <mat-icon class="err-icon" matTooltip="Name is required">error_outline</mat-icon>
+            </ng-container>
+        </div>
+        <div class="field" [class.is-invalid]="hasError('email')">
+            <mat-icon class="label-icon">account_circle</mat-icon>
+            <input type="text" placeholder="Email" formControlName="email">
+            <ng-container *ngIf="hasError('email')">
+                <mat-icon class="err-icon" *ngIf="signUpForm.get('email').errors.required" matTooltip="Email is required">error_outline</mat-icon>
+                <mat-icon class="err-icon" *ngIf="signUpForm.get('email').errors.pattern" matTooltip="Password is Invalid">error_outline</mat-icon>
+            </ng-container>
+        </div>
+        <div class="field" [class.is-invalid]="hasError('password')">
+            <mat-icon class="label-icon">lock</mat-icon>
+            <input type="text" placeholder="Password" formControlName="password">
+            <ng-container *ngIf="hasError('password')">
+                <mat-icon class="err-icon" matTooltip="Password is required">error_outline</mat-icon>
+            </ng-container>
+        </div>
+    </form>
+    <button class="sign-up" (click)="onSubmit()">Sign Up</button>
+    <div class="sign-in">
+        <span>Existing User?</span>
+        <a href="/login">Sign In</a>
+    </div>
+</div>

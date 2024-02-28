@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
 })
 
 export class LoginComponent implements OnInit {
-    isLoggedIn = true;
+    isLoggedIn: boolean = false;
+    email: string;
+    password: string;
     constructor(
         private _router: Router,
     ) { }
