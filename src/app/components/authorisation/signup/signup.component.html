@@ -15,7 +15,7 @@
             <input type="text" placeholder="Email" formControlName="email">
             <ng-container *ngIf="hasError('email')">
                 <mat-icon class="err-icon" *ngIf="signUpForm.get('email').errors.required" matTooltip="Email is required">error_outline</mat-icon>
-                <mat-icon class="err-icon" *ngIf="signUpForm.get('email').errors.pattern" matTooltip="Password is Invalid">error_outline</mat-icon>
+                <mat-icon class="err-icon" *ngIf="signUpForm.get('email').errors.pattern" matTooltip="Email is Invalid">error_outline</mat-icon>
             </ng-container>
         </div>
         <div class="field" [class.is-invalid]="hasError('password')">

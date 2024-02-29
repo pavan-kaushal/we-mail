@@ -2,17 +2,24 @@
     <div class="header">
         We Mail
     </div>
-    <form class="login-form">
-        <div class="field">
-            <mat-icon>account_circle</mat-icon>
-            <input type="text" placeholder="Email" [(ngModel)]="email">
+    <form class="login-form" [formGroup]="loginForm">
+        <div class="field" [class.is-invalid]="hasError('email')">
+            <mat-icon class="label-icon">account_circle</mat-icon>
+            <input type="text" placeholder="Email" formControlName="email">
+            <ng-container *ngIf="hasError('email')">
+                <mat-icon class="err-icon" *ngIf="loginForm.get('email').errors.required" matTooltip="Email is required">error_outline</mat-icon>
+                <mat-icon class="err-icon" *ngIf="loginForm.get('email').errors.pattern" matTooltip="Email is Invalid">error_outline</mat-icon>
+            </ng-container>
         </div>
-        <div class="field">
-            <mat-icon>lock</mat-icon>
-            <input type="text" placeholder="Password" [(ngModel)]="password">
+        <div class="field" [class.is-invalid]="hasError('password')">
+            <mat-icon class="label-icon">lock</mat-icon>
+            <input type="text" placeholder="Password" formControlName="password">
+            <ng-container *ngIf="hasError('password')">
+                <mat-icon class="err-icon" matTooltip="Password is required">error_outline</mat-icon>
+            </ng-container>
         </div>
     </form>
-    <button class="sign-in">Sign In</button>
+    <button class="sign-in" (click)="onSubmit()">Sign In</button>
     <div class="sign-up">
         <span>New User?</span>
         <a href="/signup">Sign Up</a>

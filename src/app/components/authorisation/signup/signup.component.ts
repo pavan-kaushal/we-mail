@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-signup',
@@ -11,8 +12,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 
 export class SignupComponent implements OnInit {
-    isLoggedIn: boolean = false;
-    signUpForm: FormGroup
+    signUpForm: FormGroup;
+    $tokenSubscription: Subscription;
     constructor(
         private _formBuilder: FormBuilder,
         private _router: Router,
@@ -21,9 +22,11 @@ export class SignupComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        if(this.isLoggedIn){
-            this._router.navigate(['/home/users'])
-        }
+        this.$tokenSubscription = this._authService.getAuthToken().subscribe(val => {
+            if(val){
+                this._router.navigate(['/home/users'])
+            }
+        })
         this.signUpForm = this._formBuilder.group({
             name: ['', Validators.required],
             email: ['', [Validators.required,Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$")]],
