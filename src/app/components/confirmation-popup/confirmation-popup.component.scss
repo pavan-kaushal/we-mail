@@ -1,0 +1,23 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+div[mat-dialog-content] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    font-size: 1.2rem;
+}
+
+.question-mark {
+    color: orange;
+    font-size: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}

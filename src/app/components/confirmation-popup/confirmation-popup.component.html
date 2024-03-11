@@ -1,0 +1,10 @@
+<div mat-dialog-content>
+    <mat-icon class="question-mark">help</mat-icon>
+    <span style="font-size: 24px; font-weight: 600; text-align: center;">{{data.title}}</span>
+    <span style="font-size: 18px; text-align: center;">{{data.message}}</span>
+</div>
+
+<div mat-dialog-actions style="display: flex; align-items: center; justify-content: center;">
+    <button mat-raised-button mat-dialog-close>No</button>
+    <button mat-raised-button (click)="onYesClick()" color="primary">Yes</button>
+</div>
