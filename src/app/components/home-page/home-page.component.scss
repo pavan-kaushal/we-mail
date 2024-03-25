@@ -25,6 +25,17 @@ a {
         gap: 3px;
         font-size: 18px;
         margin-left: 12px;
+        mat-icon {
+            cursor: pointer;
+            height: 28px;
+            width: 32px;
+            font-size: 32px;
+            transition: all 0.2s ease;
+            margin-right: 5px;
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
     }
 
     .links-wrapper {
@@ -44,6 +55,16 @@ a {
             &.active {
                 border-bottom: 1px solid white;
             }
+        }
+    }
+}
+
+::ng-deep {
+    .user-dialog-panel {
+        .mat-dialog-container {
+            padding: 0 !important;
+            display: flex !important;
+            flex-direction: column;
         }
     }
 }

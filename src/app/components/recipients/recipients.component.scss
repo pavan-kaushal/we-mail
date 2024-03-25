@@ -75,22 +75,7 @@ table {
 }
 
 .form-item {
-    display: flex;
-    align-items: center;
-    padding: 5px 0px;
-    .label {
-        width: 60px;
-        margin-right: 10px;
-        justify-content: space-between;
-        color: #21254E !important;
-        display: flex;
-        align-items: center;
-        font-size: 16px !important;
-    }
-    input {
-        padding: 10px 6px;
-        flex: 1;
-        border-radius: 3px;
-        border-width: 0.5px;
+    .label{
+        width: 60px !important;
     }
 }

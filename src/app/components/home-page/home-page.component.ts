@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { UserDialogComponent } from '../user-identities-dialog/user-identities-dialog.component';
 
 @Component({
   selector: 'app-home-page',
@@ -8,9 +9,19 @@ import { Router } from '@angular/router';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() {
+  constructor(
+    private _dialog: MatDialog,
+  ) {
   }
   
   ngOnInit() {
+  }
+
+  openUserDialog(){
+    this._dialog.open(UserDialogComponent, {
+      maxHeight: '650px',
+      width: '450px',
+      panelClass: 'user-dialog-panel'
+    })
   }
 }

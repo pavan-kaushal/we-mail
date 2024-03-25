@@ -1,0 +1,83 @@
+<div class="header" *ngIf="!isDataLoading">
+    <div class="event-details">
+        <span class="name">{{eventDetails.name}}</span>
+        <span class="description">{{eventDetails.description}}</span>
+    </div>
+    <div class="buttons-container">
+        <button mat-raised-button color="primary">
+            <mat-icon>edit</mat-icon>
+            Edit Template
+        </button>
+        <button mat-raised-button [matMenuTriggerFor]="attributeDataMenu">
+            Attributes
+            <mat-icon>more_vertical</mat-icon>
+        </button>
+        <div class="api-content-wrapper">
+            <button mat-raised-button class="green-btn api-btn" (click)="showApiDataDialog = !showApiDataDialog">
+                <mat-icon>code</mat-icon> API
+            </button>
+            <ng-container *ngIf="showApiDataDialog" [ngTemplateOutlet]="apiData"></ng-container>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+
+</div>
+
+<input type="file" #fileInput accept=".xls, .xlsx" (change)="onFileSelected($event)" style="display: none;">
+
+<ng-template #apiData>
+    <div class="api-data-container" (click)="$event.stopPropagation()">
+        <div class="api-title">
+            <mat-icon>computer</mat-icon>
+            Trigger Event
+        </div>
+        <div class="api-url">
+            <input type="text" disabled [(ngModel)]="test">
+            <mat-icon matTooltip="Copy URL To Clipboard">file_copy_outline</mat-icon>
+        </div>
+        <div class="info">Trigger using the URL</div>
+    </div>
+</ng-template>
+
+<mat-menu #attributeDataMenu="matMenu">
+    <ng-template matMenuContent let-documents="documents">
+        <button mat-menu-item>
+            <mat-icon>download</mat-icon>
+            Download
+        </button>
+        <button mat-menu-item (click)="openUploadDialog()">
+            <mat-icon>upload</mat-icon>
+            Upload
+        </button>
+    </ng-template>
+</mat-menu>
+
+
+<ng-template #editTemplateDialog>
+
+</ng-template>
+
+<ng-template #uploadDialog>
+    <div mat-dialog-title class="dialog-title">
+        <div style="width: 10%;"></div>
+        <span>Attributes Upload</span>
+        <div style="width: 10%;">
+            <mat-icon class="close-icon" mat-dialog-close>close</mat-icon>
+        </div>
+    </div>
+    <div mat-dialog-content>
+        <div class="upload-file-container" (click)="browseFiles()">
+            <mat-icon class="upload-icon">cloud_upload</mat-icon>
+            <div class="message">
+                <span class="overflow-ellipsis">{{selectedFile? selectedFile.name :'Browse File to Upload'}}</span>
+                <mat-icon *ngIf="selectedFile" matTooltip="Clear File Selection" 
+                (click)="resetFileSelect(); $event.stopPropagation()">refresh</mat-icon>
+            </div>
+        </div>
+    </div>
+    <div mat-dialog-actions style="display: flex; align-items: center; justify-content: center;">
+        <button mat-raised-button class="green-btn" [disabled]="!selectedFile">Submit</button>
+    </div>
+</ng-template>

@@ -1,0 +1,122 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 0px 20px;
+    flex-basis: 0;
+    overflow-y: auto;
+    background: #f6f6f6;
+}
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0px;
+    .event-details {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        color: #000;
+        .name {
+            font-size: 24px;
+            font-weight: 500;
+        }
+        .description {
+            font-size: 0.9rem;
+            color: #5e646a;
+        }
+    }
+    .buttons-container{
+        display: flex;
+        gap: 10px;
+        .api-content-wrapper {
+            position: relative;
+        }
+
+        .api-btn {
+            border-radius: 8px;
+        }
+    }
+}
+
+.api-data-container {
+    position: absolute;
+    top: 40px;
+    right: 0px;
+    z-index: 100;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.25);
+    border: 0.5px solid #D6D6D6;
+    border-radius: 8px;
+    padding: 10px;
+    width: 250px;
+    .api-title {
+        display: flex;
+        gap: 5px;
+        font-size: 1rem;
+        font-weight: 500;
+        padding: 10px 0px;
+    }
+    .api-url {
+        display: flex;
+        gap: 5px;
+        padding: 5px;
+        input {
+            border: 1px solid #D6D6D6;
+            flex: 1;
+            padding: 5px;
+            border-radius: 5px
+        }
+        mat-icon {
+            cursor: pointer;
+            color: #5e646a;
+        }
+    }
+    .info {
+        margin-top: 10px;
+        color: #5e646a;
+    }
+}
+
+.dialog-title {
+    display: flex;
+    align-items: center;
+    align-items: center;
+    span {
+        flex: 1;
+        text-align: center;
+    }
+    .close-icon {
+        margin-left: auto;
+        cursor: pointer;
+    }
+}
+
+.upload-file-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #1976d2;
+    box-shadow: 7px 7px 12px rgba(0,0,0,0.05);
+    border: 2px dashed;
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    .upload-icon {
+        font-size: 100px;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+    }
+    .message {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+::ng-deep .attributes-upload-dialog {
+    .mat-mdc-dialog-container .mdc-dialog__content {
+        padding-bottom: unset !important;
+    }
+}

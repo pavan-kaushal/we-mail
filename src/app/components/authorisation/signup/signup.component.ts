@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { emailPattern } from 'src/app/utils/util-functions';
 
 @Component({
     selector: 'app-signup',
@@ -22,14 +23,14 @@ export class SignupComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.$tokenSubscription = this._authService.getAuthToken().subscribe(val => {
+        this.$tokenSubscription = this._authService.getAuthTokenSubject().subscribe(val => {
             if(val){
                 this._router.navigate(['/home/users'])
             }
         })
         this.signUpForm = this._formBuilder.group({
             name: ['', Validators.required],
-            email: ['', [Validators.required,Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$")]],
+            email: ['', [Validators.required,Validators.pattern(emailPattern)]],
             password: ['', Validators.required],
         });
     }
@@ -58,7 +59,6 @@ export class SignupComponent implements OnInit {
             password: this.signUpForm.get('password').value,
         }).subscribe(res => {
             if(res.success){
-             this._toastrService.success("Signed Up Succesfully");
              this.signUpForm.reset();
             }
         })

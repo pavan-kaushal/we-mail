@@ -1,0 +1,47 @@
+<div mat-dialog-title class="dialog-title">
+    <div style="width: 10%;"></div>
+    <span>User Data</span>
+    <div style="width: 10%;">
+        <mat-icon (click)="close()" class="close-icon">close</mat-icon>
+    </div>
+</div>
+<div mat-dialog-content style="display: flex; flex-direction: column;">
+    <div class="form-item">
+        <div class="label">
+            <span>Name</span>
+            <span>:</span>
+        </div>
+        <input type="text" disabled [(ngModel)]="user.name">
+    </div>
+    <div class="form-item">
+        <div class="label">
+            <span>Email</span>
+            <span>:</span>
+        </div>
+        <input type="text" disabled [(ngModel)]="user.email">
+    </div>
+    <div class="form-item" [class.is-invalid]="emailValue.invalid && emailValue.dirty && emailValue.value.length">
+        <div class="label">
+            <span>Add Email</span>
+            <span>:</span>
+        </div>
+        <input type="text" [formControl]="emailValue">
+        <mat-icon class="add-icon" (click)="addEmailIdentity()" 
+        [class.disabled]="emailValue.invalid || isDataLoading"
+        [matTooltip]="getError()">add</mat-icon>
+    </div>
+    <div class="identity-data-container" *ngIf="emailIdentities?.length">
+        <div class="header-tile">
+            <span>Added Emails</span>
+            <div class="search-input">
+                <input type="text" placeholder="Search Email">
+            </div>
+        </div>
+        <div class="identities-wrapper">
+            <div class="identity" *ngFor="let identity of emailIdentities">
+                {{identity.email}}
+                <span *ngIf="identity.isPrimary" class="primary">Primary</span>
+            </div>
+        </div>
+    </div>
+</div>

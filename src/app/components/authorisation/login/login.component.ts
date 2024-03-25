@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../auth.service';
 import { Subscription } from 'rxjs';
+import { emailPattern } from 'src/app/utils/util-functions';
 
 @Component({
     selector: 'app-login',
@@ -25,14 +26,14 @@ export class LoginComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit() {
-        this.$tokenSubscription = this._authService.getAuthToken().subscribe(val => {
+        this.$tokenSubscription = this._authService.getAuthTokenSubject().subscribe(val => {
             if(val){
                 this._router.navigate(['/home/users'])
             }
         })
         
         this.loginForm = this._formBuilder.group({
-            email: ['', [Validators.required,Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$")]],
+            email: ['', [Validators.required,Validators.pattern(emailPattern)]],
             password: ['', Validators.required],
         });
     }
@@ -58,9 +59,8 @@ export class LoginComponent implements OnInit, OnDestroy {
             password: this.loginForm.get('password').value,
         }).subscribe(res => {
             if(res.success){
-             this._toastrService.success("Logged In Succesfully");
              this.loginForm.reset();
-             this._authService.setRefreshToken(res.data.authToken)
+             this._authService.setAuthToken(res.data.authToken)
             }
         })
     }

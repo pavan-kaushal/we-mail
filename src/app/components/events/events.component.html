@@ -9,51 +9,103 @@
 </div>
 
 <div class="grid">
-    <mat-card class="CC_1">
-        <mat-icon class="delete-icon">delete</mat-icon>
-        <span class="role">Event 1</span>
-        <div class="actions">
-            <div class="action">
-                <mat-icon>manage_accounts</mat-icon>
-                Users
+    <ng-container *ngFor="let event of events">
+        <mat-card class="{{event.class}}" (click)="navigateToEventDetails(event)">
+            <mat-icon class="delete-icon" (click)="onDeleteClick(event); $event.stopPropagation()">delete</mat-icon>
+            <span class="role">{{event.name}}</span>
+            <div class="actions">
+                <div class="action" (click)="openRecipientAssignmentDialog(event); $event.stopPropagation();">
+                    <mat-icon>manage_accounts</mat-icon>
+                    Users
+                </div>
+                <div class="action" (click)="openEventDialog(event); $event.stopPropagation()">
+                    <mat-icon>edit_square</mat-icon>
+                    Edit
+                </div>
             </div>
-            <div class="action">
-                <mat-icon>edit_square</mat-icon>
-                Edit
-            </div>
-        </div>
-    </mat-card>
+        </mat-card>
+    </ng-container>
 </div>
-
+<router-outlet></router-outlet>
 <ng-template #eventData let-data>
     <div mat-dialog-title style="text-align: center;">
         {{ data._id ? 'Edit' : 'Add' }} Event
     </div>
     <div mat-dialog-content class="category-content">
-        <div class="form-item">
-            <div class="label">
-                <span>Name</span>
-                <span>:</span>
+        <form [formGroup]="data">
+            <div class="form-item" [class.is-invalid]="hasError(data,'name')">
+                <div class="label">
+                    <span>Name</span>
+                    <span>:</span>
+                </div>
+                <input placeholder="Ex. Monthly Newsletter" formControlName="name">
+                <ng-container *ngIf="hasError(data,'name')">
+                    <mat-icon class="err-icon" matTooltip="Name is required">error_outline</mat-icon>
+                </ng-container>
             </div>
-            <input placeholder="Ex. Monthly Newsletter">
+            <div class="form-item" [class.is-invalid]="hasError(data,'emailIdentity')">
+                <div class="label">
+                    <span>Email</span>
+                    <span>:</span>
+                </div>
+                <div class="select">
+                    <mat-select formControlName="emailIdentity" placeholder="Select an Email">
+                        <mat-option *ngFor="let item of emailIdentities" [value]="item._id" class="email-option">
+                            {{item.email}} <span *ngIf="item.isPrimary" class="primary">Primary</span>
+                        </mat-option>
+                    </mat-select>
+                </div>
+                <ng-container *ngIf="hasError(data,'emailIdentity')">
+                    <mat-icon class="err-icon" *ngIf="data.get('emailIdentity').errors.required" matTooltip="Email is required">error_outline</mat-icon>
+                </ng-container>
+            </div>
+            <div class="form-item" [class.is-invalid]="hasError(data,'description')">
+                <div class="label">
+                    <span>Description</span>
+                    <span>:</span>
+                </div>
+                <input placeholder="Ex. event description" formControlName="description">
+                <ng-container *ngIf="hasError(data,'description')">
+                    <mat-icon class="err-icon" matTooltip="Description is required">error_outline</mat-icon>
+                </ng-container>
+            </div>
+            <div class="form-item" [class.is-invalid]="hasError(data,'attributes')">
+                <div class="label">
+                    <span>Attributes</span>
+                    <span>:</span>
+                </div>
+                <input placeholder="Enter comma seperated names" formControlName="attributes">
+                <ng-container *ngIf="hasError(data,'attributes')">
+                    <mat-icon class="err-icon" *ngIf="data.get('attributes').errors.required" matTooltip="Attributes are required">error_outline</mat-icon>
+                    <mat-icon class="err-icon" *ngIf="data.get('attributes').errors.pattern" matTooltip="Attributes format is Invalid">error_outline</mat-icon>
+                </ng-container>
+            </div>
+    
+        </form>
+    </div>
+    <div mat-dialog-actions style="display: flex; align-items: center; justify-content: flex-end;">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-raised-button class="green-btn" [disabled]="data.invalid" (click)="saveEvent(data.value)">Save</button>
+    </div>
+</ng-template>
+
+<ng-template #recipients let-data>
+    <div mat-dialog-title style="text-align: center;">
+        Recipients
+    </div>
+    <div mat-dialog-content style="display: flex; flex-direction: column; flex: 1; overflow-y: auto; gap: 10px;">
+        <div class="search-input">
+            <input type="text" placeholder="Search Recipients">
         </div>
-        <div class="form-item">
-            <div class="label">
-                <span>Email</span>
-                <span>:</span>
+        <div class="recipients">
+            <div class="recipient" *ngFor="let doc of data.recipients">
+                <mat-checkbox [(ngModel)]="doc.isSelected"></mat-checkbox>
+                <b>{{doc.name}}</b> | {{doc.email}}
             </div>
-            <input placeholder="Ex. newsletter@wikipedia.com">
-        </div>
-        <div class="form-item">
-            <div class="label">
-                <span>Description</span>
-                <span>:</span>
-            </div>
-            <input placeholder="Ex. event description">
         </div>
     </div>
     <div mat-dialog-actions style="display: flex; align-items: center; justify-content: flex-end;">
         <button mat-button mat-dialog-close>Cancel</button>
-        <button mat-raised-button class="green-save-btn">Save</button>
+        <button mat-raised-button class="green-btn" (click)="updateRecipients(data.event,data.recipients)">Save</button>
     </div>
 </ng-template>
