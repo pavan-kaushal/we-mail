@@ -60,11 +60,12 @@
         display: flex;
         gap: 5px;
         padding: 5px;
-        input {
-            border: 1px solid #D6D6D6;
-            flex: 1;
+        .trigger-url {
+            width: 100%;
+            overflow: auto;
             padding: 5px;
-            border-radius: 5px
+            border-radius: 5px;
+            border: 0.5px solid #5e646a50;
         }
         mat-icon {
             cursor: pointer;

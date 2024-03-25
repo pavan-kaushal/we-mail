@@ -34,8 +34,9 @@
             Trigger Event
         </div>
         <div class="api-url">
-            <input type="text" disabled [(ngModel)]="test">
-            <mat-icon matTooltip="Copy URL To Clipboard">file_copy_outline</mat-icon>
+            <div class="trigger-url">{{eventUrl}}</div>
+            <mat-icon matTooltip="Copy URL To Clipboard" *ngIf="!isUrlCopied" (click)="copyUrl()">file_copy_outline</mat-icon>
+            <mat-icon style="color: #0A9C4D;" *ngIf="isUrlCopied">done</mat-icon>
         </div>
         <div class="info">Trigger using the URL</div>
     </div>

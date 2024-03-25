@@ -20,7 +20,7 @@ export class EventScreenComponent implements OnInit {
     eventDetails;
     showApiDataDialog = false;
     isUrlCopied = false; 
-    test="higihfvkhvhkvkhvkhvkhfvkhvkhjjkhkhkhfkh";
+    eventUrl="higihfvkhvhkvkhvkhvkhfvkhvkhjjkhkhkhfkh";
     isDataLoading = false;
     selectedFile = null;
     constructor(
@@ -53,6 +53,17 @@ export class EventScreenComponent implements OnInit {
                 this.isDataLoading = false;
             }
         })
+    }
+
+    copyUrl(){
+        const urlElem = document.getElementsByClassName('trigger-url')[0];
+        console.log(urlElem.innerHTML);
+        navigator.clipboard.writeText(urlElem.innerHTML);
+        this.isUrlCopied = true;
+        this._toastrService.success("URL Copied to Clipboard")
+        setTimeout(() => {
+            this.isUrlCopied = false
+        },3000)
     }
 
     browseFiles(){
@@ -92,6 +103,6 @@ export class EventScreenComponent implements OnInit {
     }
 
     openEditTemplateDialog(){
-        
+
     }
 }
