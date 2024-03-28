@@ -76,8 +76,7 @@
                 </div>
                 <input placeholder="Enter comma seperated names" formControlName="attributes">
                 <ng-container *ngIf="hasError(data,'attributes')">
-                    <mat-icon class="err-icon" *ngIf="data.get('attributes').errors.required" matTooltip="Attributes are required">error_outline</mat-icon>
-                    <mat-icon class="err-icon" *ngIf="data.get('attributes').errors.pattern" matTooltip="Attributes format is Invalid">error_outline</mat-icon>
+                    <mat-icon class="err-icon" matTooltip="Attributes format is Invalid">error_outline</mat-icon>
                 </ng-container>
             </div>
     

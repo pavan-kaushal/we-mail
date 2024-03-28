@@ -80,7 +80,7 @@ export class EventsComponent implements OnInit {
                             name: [eventDoc?.name ?? '', Validators.required], 
                             emailIdentity: [eventDoc?.emailIdentity ?? '', [Validators.required]],
                             description: [eventDoc?.name ?? '', Validators.required],
-                            attributes: [eventDoc?.attributes?.length ? eventDoc.attributes.join(',') : '', [Validators.required, Validators.pattern("^[A-Za-z0-9_,]+$")]]
+                            attributes: [eventDoc?.attributes?.length ? eventDoc.attributes.join(',') : '', Validators.pattern("^[A-Za-z0-9_,]+$")]
                     })
                 })
             }
